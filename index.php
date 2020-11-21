@@ -184,7 +184,7 @@ function display_block( $file )
 	$download_att = ($force_download AND $file_ext != "dir" ) ? " download='" . basename($file) . "'" : "";
 	
 	$rtn = "<div class=\"block\">";
-	$rtn .= "<a href=\"$file\" class=\"$file_ext\"{$download_att}>";
+	$rtn .= "<a href=\"$file\" data-hash=\"" . crc32($file) . "\" class=\"$file_ext\"{$download_att}>";
 	$rtn .= "	<div class=\"img $file_ext\"></div>";
 	$rtn .= "	<div class=\"name\">";
 	
@@ -281,7 +281,7 @@ function build_blocks( $items, $folder )
 		{
 			if( $sub_items )
 			{
-				echo "<div class='sub' data-folder=\"$file\">";
+				echo "<div class='sub' data-folder=\"" . crc32($file) . "\">";
 				build_blocks( $sub_items, $file );
 				echo "</div>";
 			}
