@@ -28,6 +28,9 @@ SOFTWARE.
 
 *** OPTIONS ***/
 
+	// PATH FOR SCAN FILES
+	$scan_path = dirname(__FILE__);
+
 	// TITLE OF PAGE
 	$title = "List of Files";
 	
@@ -174,7 +177,7 @@ function display_block( $file )
 	global $ignore_file_list, $ignore_ext_list, $force_download;
 	
 	$file_ext = ext($file);
-	if( !$file_ext AND is_dir($file)) $file_ext = "dir";
+	if( false !== readdir($file) ) $file_ext = "dir";
 	if(in_array($file, $ignore_file_list)) return;
 	if(in_array($file_ext, $ignore_ext_list)) return;
 	
@@ -301,7 +304,7 @@ function build_blocks( $items, $folder )
 }
 
 // GET THE BLOCKS STARTED, FALSE TO INDICATE MAIN FOLDER
-$items = scandir( dirname(__FILE__) );
+$items = scandir( $scan_path );
 build_blocks( $items, false );
 ?>
 
