@@ -4,49 +4,44 @@ Easily display files and folders in a mobile friendly, clean and cool way. Just 
 
 ## Options 
 
-At the top of the `index.php` file you have a few settings you can change:
+```php
+// PATH FOR SCAN FILES
+$scan_path = dirname(__FILE__);
 
---
-`$title = "List of Files";`
+// TITLE OF PAGE
+$title = "List of Files";
 
-This will be the title of your page and also is set to the meta mitle of the document.
+// FILE HANDLER, example handle.php?p={FILE}
+//const FILE_HANDLER = "handle.php";
+const FILE_HANDLER = false;
 
---
-`$color	= "light";`
+// STYLING (light or dark)
+const COLOR_STYLE	= "light";
 
-Change this variable to `dark` when you are feeling down.
+// ADD SPECIFIC FILES YOU WANT TO IGNORE HERE
+const IGNORE_FILE_LIST = array( ".htaccess", "Thumbs.db", ".DS_Store", "index.php" );
 
---
-`$ignore_file_list = array( ".htaccess", "Thumbs.db", ".DS_Store", "index.php" );`
+// ADD SPECIFIC FILE EXTENSIONS YOU WANT TO IGNORE HERE, EXAMPLE: array('psd','jpg','jpeg')
+const IGNORE_EXT_LIST = array( );
 
-Create an array of files that you do not want to appear in the listing
+// SORT BY (name_asc, name_desc, date_asc, date_desc)
+const SORT_BY = "name_asc";
 
---
-`$ignore_ext_list = array( );`
+// HIDE .files/.folders
+const HIDE_DOT = true;
 
-You can create an array of extensions not to show, for example: 'jpg,png,gif,pdf'
+// OPEN LINK IN NEW TAB, WORK IF NOT force_download
+const FILE_NEW_IN_TAB = true;
 
---
-`$sort_by = "name_asc";`
+// ICON URL, use "https://www.dropbox.com/s/lzxi5abx2gaj84q/flat.png?dl=0" for remote image
+const ICON_URL = "data:image/png;base64,............";
 
-This will sort the files, the available options are: name_asc, name_desc, date_asc, date_desc
+// TOGGLE SUB FOLDERS, SET TO false IF YOU WANT OFF
+const TOGGLE_SUB_FOLDERS = true;
 
---
-`$icon_url = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAAyCAYAAADP7vEw....";`
+// FORCE DOWNLOAD ATTRIBUTE
+const FORCE_DOWNLOAD = false;
 
-A data sprite of evenly spaced out icons. You can create your own like the one found here: https://www.dropbox.com/s/lzxi5abx2gaj84q/flat.png?dl=0
-
---
-`$toggle_sub_folders = true;`
-
-If a folder is clicked on, it will slide down the sub folder. You can turn this off here.
-
---
-`$force_download = true;`
-
-This will add the html download attribute which forces the download in some browsers.
-
---
-`$ignore_empty_folders = true;`
-
-Ability to hide empty folders.
+// IGNORE EMPTY FOLDERS
+const IGNORE_EMPTY_FOLDERS = true;
+```
